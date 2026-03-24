@@ -1,6 +1,7 @@
 ﻿using ASpDotNetWebAPI.Data;
 using ASpDotNetWebAPI.Models;
 using ASpDotNetWebAPI.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
@@ -24,6 +25,7 @@ namespace ASpDotNetWebAPI.Controllers
         //    return ok(allemployees);
         //}
         [HttpGet]
+        [Authorize]
         public IActionResult GetEmployeeSpecific(Guid id)
         {
             var employee = applicationDbcontext.Employees.Find(id);
@@ -42,6 +44,7 @@ namespace ASpDotNetWebAPI.Controllers
             return Ok(employeedto);
         }
         [HttpPost]
+        [Authorize]
         public IActionResult PutEmployee(EmployeeDTO employeedto)
         {
             var employee = new Employee()
@@ -58,6 +61,7 @@ namespace ASpDotNetWebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public IActionResult updateEmplyeeDTO(Guid id, UpdateEmplyeeDTO updateEmplyeeDTO)
         {
             var employee = applicationDbcontext.Employees.Find(id);
@@ -78,6 +82,7 @@ namespace ASpDotNetWebAPI.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public IActionResult DeleteEmplyeeDTO(Guid id)
         {
             var employee = applicationDbcontext.Employees.Find(id);
