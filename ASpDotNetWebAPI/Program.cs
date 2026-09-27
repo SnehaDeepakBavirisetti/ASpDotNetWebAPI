@@ -5,7 +5,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ Required for Identity (.NET 8)
+// Deepak changed the comment // ✅ Required for Identity (.NET 8)
 builder.Services.AddSingleton<TimeProvider>(TimeProvider.System);
 
 // ✅ Identity DB (Auth)
